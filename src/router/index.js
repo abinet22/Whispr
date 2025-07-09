@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import IndexScreen from '@/components/IndexScreen.vue';
 import SplashScreen from '@/components/SplashScreen.vue';
-import AnonymousChatScreen from '@/components/AnonymousChatScreen';
-import DashboardScreen from '@/components/DashboardScreen';
-import ExploreScreen from '@/components/ExploreScreen';
-import DirectMessage from '@/components/DirectMessage';
-import MessageScreen from '@/components/MessageScreen';
+import AnonymousChatScreen from '@/components/AnonymousChatScreen.vue';
+import DashboardScreen from '@/components/DashboardScreen.vue';
+import ExploreScreen from '@/components/ExploreScreen.vue';
+import DirectMessage from '@/components/DirectMessage.vue';
+import MessageScreen from '@/components/MessageScreen.vue';
 
 function isAuthenticated() {
   // Check if the user is authenticated by checking local storage
@@ -76,6 +76,18 @@ const routes = [
         next();
       } else {
         next('/'); // Redirect to splash screen or login
+      }
+    }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('@/components/DashboardScreen.vue'), // Temporary redirect to dashboard
+    beforeEnter: (to, from, next) => {
+      if (isAuthenticated()) {
+        next('/dashboard');
+      } else {
+        next('/');
       }
     }
   }

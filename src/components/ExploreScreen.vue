@@ -30,12 +30,12 @@
         <PostScreen :active-tab="activeTab" :search-query="searchQuery"  @open-modal="handleOpenModal" />
       </div>
   
-      <div class="bottom-nav">
-        <a href="/dashboard"><i class="fas fa-home"></i></a>
-        <a href="/explore"><i class="fas fa-compass"></i></a>
-        <a href="/anonymouschat"><i class="fas fa-user-secret"></i></a>
-        <a href="/directmessage"><i class="fas fa-comments"></i></a>
-      </div>
+              <div class="bottom-nav">
+          <router-link to="/dashboard"><i class="fas fa-home"></i></router-link>
+          <router-link to="/explore"><i class="fas fa-compass"></i></router-link>
+          <router-link to="/anonymouschat"><i class="fas fa-user-secret"></i></router-link>
+          <router-link to="/directmessage"><i class="fas fa-comments"></i></router-link>
+        </div>
   
       <div class="add-whisper-btn" @click="openModal('addWhisper')">
         <i class="fas fa-plus"></i>

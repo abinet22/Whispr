@@ -14,9 +14,9 @@
             </svg>
             <span class="logo-text">Whispr</span>
           </div>
-          <a href="/AnonymousChat" class="button" >
+          <router-link to="/anonymouschat" class="button" >
             <i class="fas fa-comment-alt"></i> Start Whispering
-          </a>
+          </router-link>
         </div>
         
         <div class="right-side">
@@ -47,13 +47,13 @@
         </div>
       </div>
       <div class="footer-links">
-        <a href="/about">About</a>
-        <a href="/download">Download the Whispr app</a>
-        <a href="/help">Help Center</a>
-        <a href="/terms">Terms of Service</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/cookies">Cookie Policy</a>
-        <a href="#">© 2023 Whispr, Inc.</a>
+        <a href="#" @click.prevent>About</a>
+        <a href="#" @click.prevent>Download the Whispr app</a>
+        <a href="#" @click.prevent>Help Center</a>
+        <a href="#" @click.prevent>Terms of Service</a>
+        <a href="#" @click.prevent>Privacy Policy</a>
+        <a href="#" @click.prevent>Cookie Policy</a>
+        <a href="#" @click.prevent>© 2023 Whispr, Inc.</a>
        
       </div>
  
