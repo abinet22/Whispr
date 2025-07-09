@@ -128,6 +128,7 @@ export default {
           // Assuming response contains user data and session token
           localStorage.setItem('user', JSON.stringify(response.data.user));
           localStorage.setItem('sessionToken', response.data.token);
+          this.$emit('close'); // Close the modal first
           this.$router.push('/dashboard'); // Redirect to dashboard
           // Optionally store user data and session information
      

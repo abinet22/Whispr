@@ -29,6 +29,10 @@ export default createStore({
       } catch (error) {
         console.error('Failed to fetch user data:', error);
       }
+    },
+    clearUser({ commit }) {
+      commit('setUser', null);
+      commit('setSessionToken', null);
     }
   },
   getters: {

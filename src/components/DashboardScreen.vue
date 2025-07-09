@@ -27,7 +27,7 @@
           <li><a href="#groups"><i class="fas fa-user-friends"></i>Groups</a></li>
           <li><a href="#settings"><i class="fas fa-cog"></i>Settings</a></li>
           <li><a href="#help"><i class="fas fa-question-circle"></i>Help & Support</a></li>
-          <li><a href="/" @click="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+          <li><a href="#" @click="logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
         </ul>
       </div>
     </div>
@@ -99,12 +99,12 @@
       </div>
     </div>
     
-    <div class="bottom-nav">
-      <a href="/dashboard "><i class="fas fa-home"></i></a>
-      <a href="/explore"><i class="fas fa-compass"></i></a>
-      <a href="/anonymouschat"><i class="fas fa-user-secret"></i></a>
-      <a href="/directmessage"><i class="fas fa-comments"></i></a>
-    </div>
+          <div class="bottom-nav">
+        <router-link to="/dashboard"><i class="fas fa-home"></i></router-link>
+        <router-link to="/explore"><i class="fas fa-compass"></i></router-link>
+                 <router-link to="/anonymouschat"><i class="fas fa-user-secret"></i></router-link>
+        <router-link to="/directmessage"><i class="fas fa-comments"></i></router-link>
+      </div>
   </div>
 </template>
 
@@ -113,9 +113,6 @@ import PostScreen from './PostScreen.vue'; // Adjust the path as needed
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-
-const router = useRouter();
-const store = useStore();
 export default {
   components: {
     PostScreen
@@ -146,6 +143,7 @@ export default {
   },
   setup() {
     const store = useStore();
+    const router = useRouter();
     const user = computed(() => store.getters.user);
 
     onMounted(() => {
@@ -154,7 +152,7 @@ export default {
       }
     });
 
-    return { user };
+    return { user, router, store };
   },
   methods: {
     toggleSideNav() {
@@ -210,7 +208,7 @@ export default {
     localStorage.removeItem('sessionToken');
 
     // Clear Vuex store
-    store.dispatch('clearUser');
+    this.store.dispatch('clearUser');
 
     // Invalidate server-side session (make a request to your server)
     await fetch('http://localhost:5000/api/users/logout', {
@@ -219,7 +217,7 @@ export default {
     });
 
     // Redirect to home or login page
-    router.push('/');
+    this.router.push('/');
   } catch (error) {
     console.error('Logout failed:', error);
   }
